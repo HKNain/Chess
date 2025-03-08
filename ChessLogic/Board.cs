@@ -6,8 +6,9 @@
 
         private readonly Dictionary<Player, Position> pawnSkipPositions = new Dictionary<Player, Position>
         {
-
-        }
+            {Player.White, null },
+            {Player.Black, null },
+        };
 
         public Piece this[int row, int col]
         {
@@ -19,6 +20,16 @@
         {
             get { return this[pos.Row, pos.Column]; }
             set {  this[pos.Row, pos.Column] = value; }
+        }
+
+        public Position GetPawnSkipPositions(Player player)
+        {
+            return pawnSkipPositions[player];
+        }
+
+        public void SetPawnSkipPositions(Player player,  Position pos)
+        {
+            pawnSkipPositions[player] = pos;
         }
 
         public static Board Initial()
